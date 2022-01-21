@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+int dp[1001][1001];
+
+int main() {
+int n,m,max=0,i,j;
+    scanf("%d",&n);
+    int a[n+1];
+    for(i=1;i<=n;i++){scanf("%d",&a[i]);}
+    scanf("%d",&m);
+    int b[m+1];
+    
+    for(i=1;i<=m;i++){scanf("%d",&b[i]);}
+    for(i=1;i<=n;i++){
+        for(j=1;j<=m;j++){
+            if(a[i]==b[j])
+            {
+                dp[i][j]=dp[i-1][j-1]+1;
+                if(max<dp[i][j]) max=dp[i][j];
+            }
+        }
+    }
+    printf("%d",max);
+    return 0;
+}
